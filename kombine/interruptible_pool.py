@@ -57,7 +57,9 @@ def disable_openblas_threading():
         try:
             openblas_lib = ctypes.cdll.LoadLibrary(path)
         except OSError:
-            continue
+            pass
+        else:
+            break
 
     try:
         openblas_lib.openblas_set_num_threads(1)
